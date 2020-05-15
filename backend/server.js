@@ -25,6 +25,9 @@ app.use('/auth', authenticationRouter)
 const sessionRouter = require('./routes/session');
 app.use('/session', sessionRouter)
 
+const statisticsRouter = require('./routes/statistics');
+app.use('/statistics', statisticsRouter)
+
 app.listen(port, ()=>{
     console.log(`listening at port: ${port}`)
 });
