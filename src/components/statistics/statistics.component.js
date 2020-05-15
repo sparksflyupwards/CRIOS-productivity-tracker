@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Chart from "react-google-charts";
 import axios from "axios";
-
+import { Message, Icon, Dimmer, Loader, Segment } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css';
 class Statistics extends Component {
     constructor(props){
         super(props);
@@ -9,7 +10,7 @@ class Statistics extends Component {
     
         this.state = {sessions: [],
                      data: [[{ type: 'date', id: 'Date' }, { type: 'number', id: 'minutesWorked' }],],
-                     dataIsReady: "true"  
+                     dataIsReady: "false"  
                     };
       }
 
@@ -49,7 +50,19 @@ class Statistics extends Component {
 />
     ) :
     (
-        <div>Fetching data from API</div>
+        <Segment>
+      
+      <Message icon>
+    <Icon name='circle notched' loading />
+    <Message.Content>
+      <Message.Header>Just one second</Message.Header>
+      We are fetching that content for you.
+    </Message.Content>
+  </Message>
+  
+    </Segment>
+
+  
     )}
 
 
