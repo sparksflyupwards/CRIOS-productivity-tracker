@@ -13,6 +13,10 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
+    longest_streak: {
+        type: Number,
+        required: false
+    }
 
 }, {
     timestamps: true,

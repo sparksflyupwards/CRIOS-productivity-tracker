@@ -112,7 +112,7 @@ onStartTime() {
     return(
       
       <div>
-      <Modal trigger={<Button>Show Modal</Button>}>
+      <Modal trigger={<Button>Show Modal</Button>} dimmer="blurring">
     <Modal.Header>Select a Photo</Modal.Header>
     <Modal.Content>
        <Modal.Description>

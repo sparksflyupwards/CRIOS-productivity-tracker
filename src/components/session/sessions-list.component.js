@@ -29,7 +29,7 @@ const Session = props =>
 
   <tr>
     <td>{props.session.username}</td>
-    <td>{props.session.start_time.substring(0,10)}</td>
+    <td>{props.session.stop_time.substring(0,10)}</td>
     <td>{timeConverter(props.session.total_time)}</td>
     <td>{props.session.notes}</td>
     <td>
@@ -80,7 +80,7 @@ sessionList() {
               <thead className="thead-light">
                   <tr>
                       <th>Username</th>
-                      <th>Start time</th>
+                      <th>Stop time</th>
                       <th>Total Time</th>
                       <th>Notes</th>
                       <th>Action</th>

@@ -19,10 +19,15 @@ class Statistics extends Component {
         .then(res =>{
             this.setState({sessions: res.data});
             for (const session of this.state.sessions){
-                this.state.data.push([new Date(session.stop_time), Number(session.total_time/1000/60).toFixed(2)])
+                this.state.data.push([new Date(session.stop_time), Number(Number(session.total_time/1000/60).toFixed(2))])
             }
             this.setState({dataIsReady: "true"});
-            console.log(this.state.data)
+            console.log([
+                [
+                  'Day',
+                  'Minutes worked',
+                ],
+                [new Date("2020-02-2"),22]].concat(this.state.data.slice(1)))
         })
         .catch(err=> {
             console.log(err);
@@ -31,23 +36,45 @@ class Statistics extends Component {
         
     
             
-      render(){
+ render(){
         return (<div id={"#" + this.props.id}> 
     
 
     {this.state.dataIsReady == "true" ? 
     (
-    <Chart
-  width={1000}
-  height={350}
-  chartType="Calendar"
+         <div class="charts">   
+            <Chart
+            width={1000}
+            height={350}
+            chartType="Calendar"
+            loader={<div>Loading Chart</div>}
+            data={this.state.data}
+            options={{
+                title: 'Yearly Data in minutes',
+            }}
+            rootProps={{ 'data-testid': '1' }}
+            />
+        <Chart
+  width={'600px'}
+  height={'400px'}
+  chartType="Line"
   loader={<div>Loading Chart</div>}
-  data={this.state.data}
+  data={[
+    [
+      'Day',
+      'Minutes worked',
+    ],
+   ].concat(this.state.data.slice(1))}
   options={{
-    title: 'Yearly Data in minutes',
+    chart: {
+      title: 'Sessions logged',
+      subtitle: 'in minutes',
+    },
   }}
-  rootProps={{ 'data-testid': '1' }}
+  rootProps={{ 'data-testid': '3' }}
 />
+        </div>
+            
     ) :
     (
         <Segment>
