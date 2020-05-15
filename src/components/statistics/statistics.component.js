@@ -21,7 +21,7 @@ class Statistics extends Component {
             for (const session of this.state.sessions){
                 this.state.data.push([new Date(session.stop_time), Number(session.total_time/1000/60).toFixed(2)])
             }
-            this.state.dataIsReady = "true"
+            this.setState({dataIsReady: "true"});
             console.log(this.state.data)
         })
         .catch(err=> {
@@ -51,16 +51,12 @@ class Statistics extends Component {
     ) :
     (
         <Segment>
-      
-      <Message icon>
-    <Icon name='circle notched' loading />
-    <Message.Content>
-      <Message.Header>Just one second</Message.Header>
-      We are fetching that content for you.
-    </Message.Content>
-  </Message>
-  
+      <Dimmer active inverted>
+        <Loader size='large'>Loading</Loader>
+      </Dimmer>
+        Hold on while we fetch your data.
     </Segment>
+    
 
   
     )}
