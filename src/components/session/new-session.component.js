@@ -109,6 +109,12 @@ onStartTime() {
     let reset = (this.state.time == 0 || this.state.isOn) ?
       null :
       <button onClick={this.onClearTime}>reset</button>
+
+    let submitSession = (this.state.time != 0 && this.state.isOn) ?
+      null :
+      <form onSubmit={this.onSubmit}>
+      <input type="submit" value="Create Session" className="btn btn-primary" />
+      </form>
     return(
       
       <div>
@@ -123,10 +129,8 @@ onStartTime() {
         {resume}
         {stop}
         {reset}
-        
-        <form onSubmit={this.onSubmit}>
-        <input type="submit" value="Create Session" className="btn btn-primary" />
-        </form>
+        {submitSession}
+      
 
         <CountdownCircleTimer
     isPlaying
