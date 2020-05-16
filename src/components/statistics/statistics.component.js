@@ -26,12 +26,9 @@ class Statistics extends Component {
  
             
             for (let i=1; i< (this.state.data.length-1); i++){
-                console.log(String(this.state.data[i][0]).slice(0,10)+" and "+String(this.state.data[i+1][0]).slice(0,10))
                 if(String(this.state.data[i][0]).slice(0,10).localeCompare(String(this.state.data[i+1][0]).slice(0,10))==0){
-                   
                     this.state.data[i][1]+=this.state.data[i+1][1]
-                    this.state.data.pop(i+1)
-                    console.log("/n "+this.state.data)
+                    this.state.data.splice(i+1,1)
                     
                     i -=1;
                 }
