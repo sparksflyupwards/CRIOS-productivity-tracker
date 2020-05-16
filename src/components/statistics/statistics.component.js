@@ -3,6 +3,8 @@ import Chart from "react-google-charts";
 import axios from "axios";
 import { Message, Icon, Dimmer, Loader, Segment } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
+
+
 class Statistics extends Component {
     constructor(props){
         super(props);
@@ -21,6 +23,24 @@ class Statistics extends Component {
             for (const session of this.state.sessions){
                 this.state.data.push([new Date(session.stop_time), Number(Number(session.total_time/1000/60).toFixed(2))])
             }
+ 
+            
+            for (let i=1; i< (this.state.data.length-1); i++){
+                console.log(String(this.state.data[i][0]).slice(0,10)+" and "+String(this.state.data[i+1][0]).slice(0,10))
+                if(String(this.state.data[i][0]).slice(0,10).localeCompare(String(this.state.data[i+1][0]).slice(0,10))==0){
+                   
+                    this.state.data[i][1]+=this.state.data[i+1][1]
+                    this.state.data.pop(i+1)
+                    console.log("/n "+this.state.data)
+                    
+                    i -=1;
+                }
+                else {
+                   
+                }
+            }
+           
+            this.setState({data: this.state.data})
             this.setState({dataIsReady: "true"});
             console.log([
                 [
@@ -35,7 +55,7 @@ class Statistics extends Component {
       }
         
     
-            
+      
  render(){
         return (<div id={"#" + this.props.id}> 
     
