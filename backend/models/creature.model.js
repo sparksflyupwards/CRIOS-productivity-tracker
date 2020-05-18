@@ -1,28 +1,32 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const taskSchema = new Schema ({
+const creatureSchema = new Schema ({
     username: {
         type: String,
         required: true
     },
-    title: {
+    name: {
         type: String,
         required: true
     },
-    finished: {
-        type: Boolean,
+    form: {
+        type: String,
         required: true
     },
-    estimated_hours: {
+    status: {
+        type: String,
+        require: true
+    },
+    goal_rate: {
         type: Number,
         required: false
     },
-    current_hours_logged: {
+    experience: {
         type: Number,
         required: true
     },
-    date_created: {
+    health: {
         type: Date,
         required: true
     },
@@ -36,5 +40,5 @@ const taskSchema = new Schema ({
     timestamps: true,
 });
 
-const Session = mongoose.model('Session', sessionSchema);
-module.exports = Session;
+const Creature = mongoose.model('Creature', creatureSchema);
+module.exports = Creature;
