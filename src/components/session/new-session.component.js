@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import axios from "axios";
-import { Segment, Modal, Button, Header } from 'semantic-ui-react'
+import { Segment, Icon, Modal, Button, Header } from 'semantic-ui-react'
 const ms = require('pretty-ms')
 
 
@@ -118,11 +118,14 @@ onStartTime() {
     return(
       
       <div>
-      <Modal trigger={<Button>Show Modal</Button>} dimmer="blurring">
-    <Modal.Header>Select a Photo</Modal.Header>
+      <Modal trigger={<Button>Create Session</Button>} 
+             dimmer="blurring"
+             closeOnDimmerClick= {false}
+             closeIcon>
+    <Modal.Header>New Session</Modal.Header>
     <Modal.Content>
        <Modal.Description>
-        <Header>Default Profile Image</Header>
+        <Header></Header>
       </Modal.Description>
       <h3>timer: {ms(this.state.time)}</h3>
         {start}
@@ -131,7 +134,10 @@ onStartTime() {
         {reset}
         {submitSession}
       
-
+    {
+      /**
+       * 
+      
         <CountdownCircleTimer
     isPlaying
     duration={10}
@@ -140,6 +146,9 @@ onStartTime() {
      
     {({ remainingTime }) => this.state.time}
   </CountdownCircleTimer>
+
+  */
+    }
     </Modal.Content>
   </Modal>
      
