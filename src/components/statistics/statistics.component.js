@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Chart from "react-google-charts";
 import axios from "axios";
-import { Message, Icon, Dimmer, Loader, Segment } from 'semantic-ui-react'
+import {Card, Message, Icon, Dimmer, Loader, Segment } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -59,18 +59,34 @@ class Statistics extends Component {
 
     {this.state.dataIsReady == "true" ? 
     (
-         <div class="charts">   
-            <Chart
+         <div class="charts">  
+
+         <Card.Group>
+    <Card fluid color='red' header='Option 1' >
+    <Card.Content>
+        <Card.Header>Yearly Data in minutes</Card.Header>
+        <Card.Meta>2019-2020</Card.Meta>
+        <Card.Description>
+        <Chart
             width={1000}
             height={350}
             chartType="Calendar"
             loader={<div>Loading Chart</div>}
             data={this.state.data}
             options={{
-                title: 'Yearly Data in minutes',
+                title: '',
             }}
             rootProps={{ 'data-testid': '1' }}
             />
+        </Card.Description>
+      </Card.Content>
+    </Card>
+    <Card fluid color='orange' header=''>
+    <Card.Content>
+        <Card.Header>Sessions Data</Card.Header>
+        <Card.Meta>2019-2020</Card.Meta>
+        <Card.Description>
+                
         <Chart
   width={'600px'}
   height={'400px'}
@@ -90,6 +106,13 @@ class Statistics extends Component {
   }}
   rootProps={{ 'data-testid': '3' }}
 />
+        </Card.Description>
+      </Card.Content>
+      </Card>
+  </Card.Group>
+
+
+        
         </div>
             
     ) :

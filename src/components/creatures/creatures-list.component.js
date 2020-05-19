@@ -9,7 +9,6 @@ const Creature = props =>
   <tr>
     <td>{props.creature.username}</td>
     <td>{props.creature.stop_time.substring(0,10)}</td>
-    <td>{timeConverter(props.creature.total_time)}</td>
     <td>{props.creature.notes}</td>
     <td>
       <Link to={"/edit/"+props.creature._id}>edit</Link> | <a href="#" onClick={() => { props.deleteCreature(props.creature._id) }}>delete</a>

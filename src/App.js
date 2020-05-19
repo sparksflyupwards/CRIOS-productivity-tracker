@@ -6,6 +6,7 @@ import Navbar from "./components/navbar.component"
 import SessionsList from "./components/session/sessions-list.component";
 import NewSession from "./components/session/new-session.component";
 import Statistics from './components/statistics/statistics.component';
+import CreatureList from './components/creatures/creatures-list.component';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/create" exact component={NewSession} />
           <Route path="/user" exact component={NewSession} />   
           <Route path="/statistics" exact component={Statistics} />   
+          <Route path="/creatures" exact component={CreatureList} />  
       </div>
     </Router>
     
