@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-
+import { makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 const Creature = props => 
 (
@@ -54,6 +56,9 @@ creatureList() {
     return(
       <div>
           <h1>Logged creatures</h1>
+          <Fab color="primary" aria-label="add">
+        <AddIcon />
+        </Fab>
           <table className="table">
               <thead className="thead-light">
                   <tr>
